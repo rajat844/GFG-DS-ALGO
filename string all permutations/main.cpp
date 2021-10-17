@@ -17,7 +17,7 @@ int main() {
     cin>>str;
     vector<string> permutation = permutationfxn(str);
     for (auto i : permutation) {
-        cout << i << " ";
+        cout<< i << " ";
     }
     return 0;
 }

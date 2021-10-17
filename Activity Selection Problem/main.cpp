@@ -8,25 +8,29 @@ bool sortbysec(const pair<int,int> &a, const pair<int,int> &b){
 }
 class Solution{
     public:
-        int maxMeetings(int start[], int end[], int n){
-            vector<pair<int,int>> times(n);
-            vector<pair<int,int>> solution(n);
-            for(int i;i<n;i++){
-                times[i].first = start[i];
-                times[i].second= end[i];
+    static bool mycomp(pair<int,int> a, pair<int,int>b){
+        return a.second < b.second;
+    }
+    
+    int maxMeetings(int start[], int end[], int n)
+    {
+        // Your code here
+        vector<pair<int,int>> room;
+        for(int i = 0; i< n;i++){
+            room.push_back(make_pair(start[i],end[i]));
+        }
+        sort(room.begin(),room.end(),mycomp);
+        
+        int maxmeet = 1;
+        int edm = room[0].second;
+        for(int i = 1; i<n;i++){
+            if(room[i].first > edm){
+                edm = room[i].second;
+                maxmeet++;
             }
-            times.sort(times.begin(),times.end(),sortbysec);
-                int index = 0;
-                int a = times[index].first;
-                int b = times[index].second;
-                solution.first.push_back(a);
-                solution.second.push_back(b);
-                for(size_t j=1;j<times.size();j++){
-                    if(times[j].first> )
-                    
-                }
-            
-            
+        }
+        return maxmeet;
+        
     }
 };
 
